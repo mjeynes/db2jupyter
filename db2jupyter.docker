@@ -24,7 +24,7 @@ RUN conda update -y conda && \
     pip install pixiedust && \
     apt-get update && \ 
     apt-get install -y gcc  && \
-    easy_install ibm-db && \
+    pip install ibm-db && \
     rm -rf /var/lib/apt/lists/*
  
 # Create the directory for Jupyter defaults and insert the settings into the file
@@ -37,7 +37,7 @@ RUN mkdir /root/.jupyter && \
     echo "c.NotebookApp.token = u''" >> ~/.jupyter/jupyter_notebook_config.py &&  \
     echo "c.FileContentsManager.delete_to_trash=False" >> ~/.jupyter/jupyter_notebook_config.py && \
     echo "c.NotebookApp.allow_root=True" >>  ~/.jupyter/jupyter_notebook_config.py && \
-    git clone git://github.com/DB2-Samples/db2jupyter.git /opt/notebooks
+    git clone -q https://github.com/DB2-Samples/db2jupyter.git /opt/notebooks
 
 #
 # Command to start Jupyter in the container
